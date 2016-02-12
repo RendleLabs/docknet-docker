@@ -18,3 +18,7 @@ mounting the relevant directories from your host machine into it so all the file
 
 It works, but I'm sure it could use some enhancements, so feel free to send me PRs if you see anything that could be improved.
 
+## How often is it updated?
+
+There's a [Zapier](https://zapier.com) scheduled webhook set up to build a new image every day at 3am, and it will pick up the latest
+`dotnet-nightly` every time that runs, so you might want to `docker pull rendlelabs/docknet` regularly.
