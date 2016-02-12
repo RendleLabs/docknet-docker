@@ -3,5 +3,12 @@
 dotnet $@
 
 if [ $? -eq 0 ] ; then
+  # Change ownership of created files to main user on host
+  # Assuming main user's UID and GID are 1000
   chown -R 1000:1000 *
+  if [ $1 == "restore" ] ; then
+    # When we've done a restore, chown the cached files too
+    chown -R 1000:1000 ~/.local/share/NuGet
+    chown -R 1000:1000 ~/.nuget
+  fi
 fi
