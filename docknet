@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+DN_NAME=$(basename ${PWD})
+CONTAINER_NAME="docknet-${DN_NAME}"
+
+if [ $1 == "start" ] ; then
+    docker run -d -v="${PWD}:/${DN_NAME}" -w="/${DN_NAME}"  --name="${CONTAINER_NAME}" rendlelabs/docknet
+elif [ $1 == "stop" ] ; then
+    docker kill ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME}
+else
+    docker exec ${CONTAINER_NAME} dotnetproxy $@
+fi
