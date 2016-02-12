@@ -7,7 +7,7 @@ RUN sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/dotnet/
     && apt-get install -y dotnet-nightly \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
     
-COPY dotnetproxy sleepforever /usr/local/bin/
+COPY dotnetproxy /usr/local/bin/
 
 # Run container until it is stopped externally
-ENTRYPOINT ["sleepforever"]
+ENTRYPOINT ["dotnetproxy"]
