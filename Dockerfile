@@ -8,6 +8,4 @@ RUN sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/dotnet/
     && apt-get clean && rm -rf /var/lib/apt/lists/*
     
 COPY dotnetproxy /usr/local/bin/
-
-# Run container until it is stopped externally
 ENTRYPOINT ["dotnetproxy"]
